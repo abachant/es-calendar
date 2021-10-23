@@ -1,0 +1,26 @@
+version: "3.7"
+
+services:
+  server:
+    build:
+      context: .
+      args:
+        MODE: local
+        ENVIRONMENT: dev
+    volumes:
+      - ./backend:/usr/src/app/backend
+      - ./frontend:/usr/src/app/frontend
+    depends_on:
+      - database
+    ports:
+      - 5000:5000
+      - 35729:35729
+    user: ${UID:-1000}:${GID:-1000}
+    command: >
+      concurrently
+        \"npm -q --prefix backend i --no-save\"
+        \"npm -q --prefix frontend i --no-save\" &&
+      rm -rf frontend/dist &&
+      concurrently
+        \"npm --prefix backend run start:watch\"
+        \"npm --prefix frontend run build:watch\"

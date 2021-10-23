@@ -1,0 +1,58 @@
+{
+  "name": "backend",
+  "private": true,
+  "main": "./src/index.ts",
+  "scripts": {
+    "start:watch": "ts-node-dev -r tsconfig-paths/register --transpile-only --respawn --exit-child --watch ./src .",
+    "start": "ts-node -r tsconfig-paths/register --transpile-only .",
+    "lint": "eslint --quiet ./src",
+    "typecheck": "tsc",
+    "test": "NODE_ENV=test jest --testPathPattern='/.*/.*\\.test\\.ts' --runInBand",
+    "format": "eslint --fix ./src",
+    "check": "npm run lint && npm run typecheck && npm run test"
+  },
+  "dependencies": {
+    "@godaddy/terminus": "^4.6.0",
+    "compression": "^1.7.4",
+    "ejs": "^3.1.5",
+    "env-var": "^7.0.0",
+    "express": "^4.17.1",
+    "express-winston": "^4.1.0",
+    "pg": "^8.5.1",
+    "sequelize": "^6.4.0",
+    "ts-node": "^9.1.1",
+    "tsconfig-paths": "^3.9.0",
+    "typescript": "^4.1.5",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "@types/sequelize": "^4.28.9",
+    "@types/body-parser": "^1.17.0",
+    "@types/express": "^4.17.11",
+    "@types/compression": "^1.7.0",
+    "@types/ejs": "^3.0.6",
+    "@types/livereload": "^0.9.0",
+    "@types/connect-livereload": "^0.5.31",
+    "connect-livereload": "^0.6.1",
+    "livereload": "^0.9.1",
+    "@typescript-eslint/eslint-plugin": "^4.15.1",
+    "eslint": "^7.20.0",
+    "eslint-config-airbnb-typescript": "^12.3.1",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "jest": "^26.6.3",
+    "prettier": "^2.2.1",
+    "ts-jest": "^26.5.1",
+    "ts-node-dev": "^1.1.1"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "clearMocks": true,
+    "moduleNameMapper": {
+      "^@src/(.*)$": "<rootDir>/$1"
+    },
+    "rootDir": "src"
+  }
+}

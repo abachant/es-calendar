@@ -1,0 +1,15 @@
+**/.gitignore
+**/.DS_Store
+**/*.log
+**/node_modules
+**/.vscode
+**/.idea
+
+database
+Makefile
+docker-compose.override.yaml
+docker-compose.yaml
+README.md
+
+frontend/dist
+frontend/public
